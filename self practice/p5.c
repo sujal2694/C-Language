@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 
 void main()
 {
@@ -11,7 +12,7 @@ void main()
         newNum1 = num % 10;
         newNum2 = (num / 10) % 10;
         newNum3 = num / 100;
-        sum = (newNum1 * newNum1 * newNum1) + (newNum2 * newNum2 * newNum2) + (newNum3 * newNum3 * newNum3);
+        sum = pow(newNum1,3) + pow(newNum2,3)  + pow(newNum3,3);
     }
     if (num == sum)
     {
