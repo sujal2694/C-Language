@@ -9,7 +9,7 @@ void main(){
     s=a+b;
     //multiplication
     m=a*b;
-    //divison
+    //divison8-
     d=a/b;
     //substraction
     sub=a-b;
