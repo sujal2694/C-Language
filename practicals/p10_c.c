@@ -9,13 +9,27 @@ int main()
     fpData = fopen("data.txt", "r");
     if (fpData == NULL)
     {
-        printf("Error: Cannot open file 'data'\n");
+        printf("Error: Cannot open file 'data.txt'\n");
         return 1;
     }
 
     // Open output files
-    fpOdd = fopen("odd", "w");
-    fpEven = fopen("even", "w");
+    fpOdd = fopen("odd.txt", "w");
+    if (fpOdd == NULL)
+    {
+        printf("Error: Cannot open file 'odd.txt'\n");
+        fclose(fpData);
+        return 1;
+    }
+
+    fpEven = fopen("even.txt", "w");
+    if (fpEven == NULL)
+    {
+        printf("Error: Cannot open file 'even.txt'\n");
+        fclose(fpData);
+        fclose(fpOdd);
+        return 1;
+    }
 
     // Read integers and separate them
     while (fscanf(fpData, "%d", &num) != EOF)
@@ -32,7 +46,7 @@ int main()
 
     // Display contents of odd file
     printf("\nOdd numbers:\n");
-    fpOdd = fopen("odd", "r");
+    fpOdd = fopen("odd.txt", "r");
     if (fpOdd != NULL)
     {
         while (fscanf(fpOdd, "%d", &num) != EOF)
@@ -44,7 +58,7 @@ int main()
 
     // Display contents of even file
     printf("\n\nEven numbers:\n");
-    fpEven = fopen("even", "r");
+    fpEven = fopen("even.txt", "r");
     if (fpEven != NULL)
     {
         while (fscanf(fpEven, "%d", &num) != EOF)
@@ -54,5 +68,6 @@ int main()
         fclose(fpEven);
     }
 
+    printf("\n"); // trailing newline
     return 0;
 }
